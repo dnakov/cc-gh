@@ -1,13 +1,28 @@
-# Claude Code GitHub Action - No API Key Required
+# Claude Code GitHub Action - Use Your Claude Subscription
 
-This repository contains a modified version of Anthropic's Claude Code GitHub Action that **removes all API key validation requirements**. This allows you to run Claude in GitHub Actions without needing to provide API keys for Anthropic, AWS Bedrock, or Google Vertex AI.
+This repository contains a modified version of Anthropic's Claude Code GitHub Action that **removes API key validation requirements**, allowing you to use your existing **Claude subscription** directly in GitHub Actions without needing separate API keys for Anthropic API, AWS Bedrock, or Google Vertex AI.
 
 ## 🎯 What This Project Does
 
-- **Removes API Key Validation**: Completely bypasses the requirement for `ANTHROPIC_API_KEY`, AWS credentials, or Google Cloud credentials
+- **Use Your Claude Subscription**: Leverage your existing Claude Pro/Team subscription instead of separate API keys
+- **Removes API Key Barriers**: Completely bypasses the requirement for `ANTHROPIC_API_KEY`, AWS credentials, or Google Cloud credentials  
 - **Maintains Full Functionality**: All other Claude Code features remain intact
-- **Secure File Creation**: Creates credential files in the container without logging sensitive content
+- **Secure Credential Handling**: Creates credential files in the container without logging sensitive content
 - **Custom Forks**: Uses forked versions of both the main action and base action for complete control
+
+## 💡 Why This Matters
+
+Instead of needing to:
+- ❌ Set up separate Anthropic API keys
+- ❌ Configure AWS Bedrock credentials  
+- ❌ Manage Google Vertex AI authentication
+- ❌ Pay for additional API usage
+
+You can now:
+- ✅ **Use your existing Claude subscription**
+- ✅ **No additional API costs**
+- ✅ **Simplified authentication**
+- ✅ **Same Claude capabilities you're already paying for**
 
 ## 🏗️ Architecture
 
@@ -48,7 +63,9 @@ cc-gh/
 
 1. Go to your repository **Settings** → **Secrets and variables** → **Actions**
 2. Add a new repository secret named `CREDENTIALS_JSON`
-3. Paste your JSON credentials as the value (format as needed for your use case)
+3. **Use your Claude subscription credentials** (session tokens, auth cookies, etc.) - format as needed for your authentication method
+
+> **Note**: This bypasses the need for separate Anthropic API keys, AWS Bedrock, or Google Vertex AI credentials. You're using your existing Claude subscription instead.
 
 ### Step 2: Trigger the Action
 
@@ -171,11 +188,6 @@ if (!useBedrock && !useVertex) {
 ### In `claude-code-action/action.yml`:
 **Changed:**
 ```yaml
-uses: anthropics/claude-code-base-action@cef27f3f006b4c6e8394105604f63f20e84ae300 # v0.0.21
-```
-
-**To:**
-```yaml
 uses: dnakov/claude-code-base-action@8d5f53ef1aaaabc6af13cf47681246a1f124460f # Modified version without validation
 ```
 
@@ -183,17 +195,19 @@ uses: dnakov/claude-code-base-action@8d5f53ef1aaaabc6af13cf47681246a1f124460f # 
 
 1. **Trigger Detection**: Action detects `@claude` mention
 2. **Repository Checkout**: Code is checked out with `fetch-depth: 1`
-3. **Credential Setup**: `~/.claude/.credentials.json` is created securely
+3. **Credential Setup**: `~/.claude/.credentials.json` is created securely using your Claude subscription
 4. **Environment Cleanup**: `CLAUDE_CODE_ACTION` is unset
 5. **Claude Execution**: Forked action runs without API key validation
-6. **Results**: Claude processes the request and responds
+6. **Results**: Claude processes the request using your existing subscription
 
 ## 🌟 Benefits
 
-- ✅ **No API Keys Required**: Run Claude without any authentication setup
+- ✅ **Use Your Existing Subscription**: Leverage Claude Pro/Team subscription you already pay for
+- ✅ **No Additional API Costs**: No separate API usage charges
+- ✅ **No API Key Management**: Skip the complexity of API key setup and rotation
 - ✅ **Full Feature Set**: All Claude Code capabilities remain available
 - ✅ **Secure Execution**: Credentials handled safely without logging
-- ✅ **Easy Setup**: Just add your credentials as a repository secret
+- ✅ **Easy Setup**: Just add your Claude credentials as a repository secret
 - ✅ **Customizable**: Modify trigger phrases, instructions, and tools
 - ✅ **Version Control**: Pinned to specific commit hashes for reliability
 
@@ -207,8 +221,9 @@ uses: dnakov/claude-code-base-action@8d5f53ef1aaaabc6af13cf47681246a1f124460f # 
 
 - The forked actions are pinned to specific commit hashes for stability
 - Credential files are temporary and cleaned up after workflow execution
-- All modifications maintain the original action's functionality while removing validation barriers
-- This setup allows Claude to run in environments where API key management is handled differently
+- All modifications maintain the original action's functionality while removing API key validation barriers
+- **This setup allows you to use your Claude subscription directly**, avoiding the need for separate API credentials
+- Perfect for teams already using Claude Pro/Team who want to extend that access to GitHub Actions
 
 ## 🤝 Contributing
 
@@ -220,4 +235,4 @@ Feel free to:
 
 ---
 
-**Disclaimer**: This project modifies Anthropic's Claude Code Action to remove API key validation. Use responsibly and ensure you have proper authorization for any AI model usage in your environment. 
+**Disclaimer**: This project modifies Anthropic's Claude Code Action to remove API key validation, allowing you to use your existing Claude subscription. Use responsibly and ensure you have proper authorization for AI model usage in your environment.
