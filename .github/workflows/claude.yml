@@ -29,6 +29,14 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Create Claude credentials file
+        env:
+          CREDENTIALS_JSON: ${{ secrets.CREDENTIALS_JSON }}
+        run: |
+          mkdir -p ~/.claude
+          printf '%s' "$CREDENTIALS_JSON" > ~/.claude/.credentials.json
+          echo "::notice::Credentials file created at ~/.claude/.credentials.json"
+
       - name: Run Claude Code
         id: claude
         uses: anthropics/claude-code-action@beta
