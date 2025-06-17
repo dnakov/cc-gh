@@ -41,7 +41,8 @@ jobs:
         id: claude
         env:
           CLAUDE_CODE_ACTION: ""
-        uses: anthropics/claude-code-action@beta
+        # Using forked action without API key validation
+        uses: dnakov/claude-code-action@main
         # with:
           # anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           
