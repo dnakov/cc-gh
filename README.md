@@ -203,11 +203,9 @@ uses: dnakov/claude-code-base-action@8d5f53ef1aaaabc6af13cf47681246a1f124460f # 
 ## 🌟 Benefits
 
 - ✅ **Use Your Existing Subscription**: Leverage Claude Pro/Team subscription you already pay for
-- ✅ **No Additional API Costs**: No separate API usage charges
-- ✅ **Full Feature Set**: All Claude Code capabilities remain available
-- ✅ **Secure Execution**: Credentials handled safely without logging
-- ✅ **Easy Setup**: Just add your Claude credentials as a repository secret
-- ✅ **Version Control**: Pinned to specific commit hashes for reliability
+- ✅ **No Additional API Costs**: No separate API usage charges  
+- ✅ **Secure Credential Handling**: Creates credential files without logging sensitive content
+- ✅ **Bypasses API Key Validation**: Removes the requirement for separate API credentials
 
 ## 🔗 Repository Links
 
