@@ -42,7 +42,7 @@ jobs:
         env:
           CLAUDE_CODE_ACTION: ""
         # Using forked action without API key validation
-        uses: dnakov/claude-code-action@main
+        uses: dnakov/claude-code-action@841a525627187f2b98aea2688c57f627cb4a0548
         # with:
           # anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           
